@@ -1,0 +1,623 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>Mohamed Fawzy — Security Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap');
+
+  :root{
+    --bg:#EEF1F4;
+    --surface:#FFFFFF;
+    --surface-2:#E4E9ED;
+    --ink:#101820;
+    --ink-soft:#4D5A64;
+    --ink-faint:#7C8790;
+    --accent:#A85A17;
+    --accent-ink:#FFFFFF;
+    --accent-2:#2E5266;
+    --line:#D3DBE1;
+    --line-strong:#B7C2C9;
+    --shadow: 0 1px 2px rgba(16,24,32,0.06);
+    --radius: 3px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0D141C;
+      --surface:#151E28;
+      --surface-2:#1C2733;
+      --ink:#E9EEF2;
+      --ink-soft:#A7B4BE;
+      --ink-faint:#71808B;
+      --accent:#DE9349;
+      --accent-ink:#1A1006;
+      --accent-2:#7FADC4;
+      --line:#28333E;
+      --line-strong:#374453;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0D141C;
+    --surface:#151E28;
+    --surface-2:#1C2733;
+    --ink:#E9EEF2;
+    --ink-soft:#A7B4BE;
+    --ink-faint:#71808B;
+    --accent:#DE9349;
+    --accent-ink:#1A1006;
+    --accent-2:#7FADC4;
+    --line:#28333E;
+    --line-strong:#374453;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{
+    font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  a{ color:inherit; }
+  h1,h2,h3{ text-wrap:balance; margin:0; font-family:"IBM Plex Mono", ui-monospace, monospace; font-weight:600; letter-spacing:-0.01em; }
+  ::selection{ background:var(--accent); color:var(--accent-ink); }
+
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 28px; }
+  .prose{ max-width:680px; }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding:14px 0;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .hex{
+    width:30px; height:30px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    background:var(--ink);
+    color:var(--bg);
+    font-family:"IBM Plex Mono", monospace;
+    font-weight:700; font-size:10.5px; letter-spacing:0.02em;
+  }
+  .brand-name{ font-family:"IBM Plex Mono", monospace; font-size:13px; font-weight:600; letter-spacing:0.01em; }
+  .brand-name span{ color:var(--ink-soft); font-weight:400; }
+  nav.seclinks{ display:flex; gap:22px; }
+  nav.seclinks a{
+    font-family:"IBM Plex Mono", monospace; font-size:11.5px; letter-spacing:0.06em;
+    text-transform:uppercase; text-decoration:none; color:var(--ink-soft);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+  }
+  nav.seclinks a:hover{ color:var(--ink); border-color:var(--accent); }
+  @media (max-width:760px){ nav.seclinks{ display:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:64px 0 52px; border-bottom:1px solid var(--line); }
+  .status-pill{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:"IBM Plex Mono", monospace; font-size:11.5px; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--ink-soft);
+    border:1px solid var(--line-strong); border-radius:999px;
+    padding:5px 12px 5px 10px; margin-bottom:22px;
+  }
+  .status-dot{ width:7px; height:7px; border-radius:50%; background:#4C8C5A; flex:none; }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .status-dot{ background:#63B36F; } }
+  :root[data-theme="dark"] .status-dot{ background:#63B36F; }
+
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 14px;
+  }
+  h1.name{ font-size:clamp(2.3rem, 5.5vw, 3.4rem); line-height:1.05; margin-bottom:16px; }
+  .tagline{
+    font-family:"Source Serif 4", serif; font-style:italic; font-weight:400;
+    font-size:1.28rem; color:var(--ink-soft); max-width:620px; margin:0 0 28px;
+    line-height:1.5;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px 22px; align-items:center;
+    font-family:"IBM Plex Mono", monospace; font-size:12.5px; color:var(--ink-faint);
+    margin-bottom:32px;
+  }
+  .hero-meta a{ text-decoration:underline; text-decoration-color:var(--line-strong); text-underline-offset:3px; color:var(--ink-soft); }
+  .hero-meta a:hover{ color:var(--accent); text-decoration-color:var(--accent); }
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    font-family:"IBM Plex Mono", monospace; font-size:12.5px; letter-spacing:0.03em;
+    text-transform:uppercase; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    padding:11px 18px; border-radius:var(--radius);
+  }
+  .btn-primary{ background:var(--ink); color:var(--bg); }
+  .btn-primary:hover{ background:var(--accent); color:var(--accent-ink); }
+  .btn-ghost{ border:1px solid var(--line-strong); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ---------- sections ---------- */
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:30px; }
+  .sec-num{ font-family:"IBM Plex Mono", monospace; font-size:12.5px; color:var(--accent); letter-spacing:0.04em; }
+  .sec-title{ font-size:1.5rem; }
+  .sec-lede{ color:var(--ink-soft); font-family:"Source Serif 4", serif; margin:10px 0 0; max-width:620px; }
+
+  p{ margin:0 0 14px; color:var(--ink); }
+  p:last-child{ margin-bottom:0; }
+  .lead{ font-size:1.08rem; }
+
+  /* about */
+  .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:44px; }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+  .fact-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .fact-list li{ display:flex; justify-content:space-between; gap:16px; padding-bottom:12px; border-bottom:1px solid var(--line); font-size:14px; }
+  .fact-list li:last-child{ border-bottom:none; padding-bottom:0; }
+  .fact-k{ font-family:"IBM Plex Mono", monospace; color:var(--ink-faint); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; padding-top:2px; }
+  .fact-v{ text-align:right; color:var(--ink); font-family:"IBM Plex Mono", monospace; font-size:13px; }
+
+  /* education */
+  .edu-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px 28px; box-shadow:var(--shadow); }
+  .edu-top{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .edu-school{ font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:1rem; }
+  .edu-gpa{ font-family:"IBM Plex Mono", monospace; font-size:12.5px; color:var(--accent); }
+  .edu-degree{ color:var(--ink-soft); margin-bottom:16px; font-size:15px; }
+  .course-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:0.02em;
+    color:var(--ink-soft); background:var(--surface-2); border:1px solid var(--line);
+    padding:4px 9px; border-radius:999px;
+  }
+
+  /* skills */
+  .skill-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .skill-cell{ background:var(--surface); padding:20px 22px; }
+  .skill-cat{ font-family:"IBM Plex Mono", monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--accent-2); margin-bottom:10px; }
+  .skill-items{ color:var(--ink-soft); font-size:14.5px; line-height:1.55; }
+
+  /* experience timeline */
+  .timeline{ display:flex; flex-direction:column; }
+  .tl-item{ display:grid; grid-template-columns:150px 1fr; gap:20px; padding:20px 0; border-top:1px solid var(--line); }
+  .tl-item:first-child{ border-top:none; padding-top:0; }
+  @media (max-width:640px){ .tl-item{ grid-template-columns:1fr; gap:6px; } }
+  .tl-date{ font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--ink-faint); padding-top:2px; text-transform:uppercase; letter-spacing:0.03em; }
+  .tl-org{ font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:14.5px; margin-bottom:3px; }
+  .tl-role{ color:var(--accent-2); font-size:13.5px; margin-bottom:8px; font-family:"IBM Plex Mono", monospace; }
+  .tl-desc{ color:var(--ink-soft); font-size:14.5px; max-width:560px; }
+
+  /* services */
+  .svc-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  @media (max-width:640px){ .svc-grid{ grid-template-columns:1fr; } }
+  .svc-cell{ background:var(--surface); padding:26px 26px 24px; display:flex; flex-direction:column; gap:10px; }
+  .svc-num{ font-family:"IBM Plex Mono", monospace; font-size:11px; color:var(--ink-faint); }
+  .svc-name{ font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:15.5px; }
+  .svc-desc{ color:var(--ink-soft); font-size:14.5px; }
+  .svc-kw{ margin-top:auto; padding-top:10px; font-family:"IBM Plex Mono", monospace; font-size:11px; color:var(--accent); letter-spacing:0.02em; }
+
+  /* projects */
+  .proj-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
+  .proj-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:12px;
+  }
+  .proj-title{ font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:15px; }
+  .proj-desc{ color:var(--ink-soft); font-size:14px; line-height:1.55; }
+  .proj-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; padding-top:4px; }
+  .proj-tags .tag{ font-size:10.5px; }
+
+  /* achievements */
+  .ach-grid{ display:grid; grid-template-columns:1fr 1fr; gap:36px 44px; }
+  @media (max-width:760px){ .ach-grid{ grid-template-columns:1fr; } }
+  .ach-group h4{ font-family:"IBM Plex Mono", monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--accent-2); margin:0 0 12px; font-weight:600; }
+  .ach-list{ list-style:none; margin:0; padding:0; }
+  .ach-list li{ font-size:14px; color:var(--ink-soft); padding:8px 0; border-top:1px solid var(--line); }
+  .ach-list li:first-child{ border-top:none; padding-top:0; }
+  .ach-list b{ color:var(--ink); font-weight:600; }
+
+  .beyond{ margin-top:34px; padding-top:26px; border-top:1px solid var(--line); }
+  .beyond h4{ font-family:"IBM Plex Mono", monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--accent-2); margin:0 0 12px; font-weight:600; }
+  .beyond p{ color:var(--ink-soft); font-size:14.5px; }
+
+  /* availability (replaces testimonials) */
+  .avail{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:30px 32px; box-shadow:var(--shadow); }
+  .avail-points{ list-style:none; margin:18px 0 0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:760px){ .avail-points{ grid-template-columns:1fr; } }
+  .avail-points li{ font-size:14px; color:var(--ink-soft); }
+  .avail-points b{ display:block; color:var(--ink); font-family:"IBM Plex Mono", monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:6px; }
+  .avail-note{ margin-top:22px; padding-top:18px; border-top:1px solid var(--line); font-size:14px; color:var(--ink-soft); }
+
+  /* contact */
+  .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:44px; align-items:start; }
+  @media (max-width:760px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-list{ list-style:none; margin:22px 0 0; padding:0; display:flex; flex-direction:column; gap:0; }
+  .contact-list li{ display:flex; justify-content:space-between; gap:14px; padding:13px 0; border-top:1px solid var(--line); font-size:14.5px; }
+  .contact-list li:first-child{ border-top:none; }
+  .contact-list .k{ font-family:"IBM Plex Mono", monospace; font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.05em; padding-top:2px; }
+  .contact-list a{ text-decoration:underline; text-decoration-color:var(--line-strong); text-underline-offset:3px; }
+  .contact-list a:hover{ color:var(--accent); text-decoration-color:var(--accent); }
+
+  footer{ padding:30px 0 44px; }
+  .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:"IBM Plex Mono", monospace; font-size:11.5px; color:var(--ink-faint); }
+
+  @media (prefers-reduced-motion: no-preference){
+    .hero > *{ animation: rise .5s ease both; }
+    .hero .eyebrow{ animation-delay:.02s; }
+    .hero h1{ animation-delay:.06s; }
+    .hero .tagline{ animation-delay:.1s; }
+    .hero .hero-meta{ animation-delay:.14s; }
+    .hero .cta-row{ animation-delay:.18s; }
+  }
+  @keyframes rise{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:translateY(0); } }
+</style>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top">
+      <span class="hex">MF</span>
+      <span class="brand-name">MOHAMED FAWZY <span>/ SEC</span></span>
+    </a>
+    <nav class="seclinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main id="top">
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="status-pill"><span class="status-dot"></span> Available for freelance engagements</div>
+      <p class="eyebrow">Penetration Testing &amp; Vulnerability Assessment</p>
+      <h1 class="name">Mohamed Fawzy</h1>
+      <p class="tagline">I help small businesses and startups close security gaps before attackers find them — through hands-on penetration testing, plain-language audits, and secure development practices.</p>
+      <div class="hero-meta">
+        <span>Alexandria, Egypt</span>
+        <a href="mailto:mohamedfawzy26.11.04@gmail.com">mohamedfawzy26.11.04@gmail.com</a>
+        <a href="tel:+201010501997">+20 10 1050 1997</a>
+        <a href="https://www.linkedin.com/in/mohamed-fawzy-06000326b" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://tryhackme.com/p/MoFawzy2024" target="_blank" rel="noopener">TryHackMe ↗</a>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:mohamedfawzy26.11.04@gmail.com?subject=Security%20project%20inquiry">Start a project →</a>
+        <a class="btn btn-ghost" href="#services">View services</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">01</span><h2 class="sec-title">About</h2></div>
+      <div class="about-grid">
+        <div class="prose">
+          <p class="lead">I'm a 4th-year Cybersecurity student at Alamein International University, currently completing a Penetration Testing &amp; Vulnerability Analysis diploma with the Digital Egypt Pioneers Initiative (DEPI). My days split between offensive-security labs — exploiting OWASP Top 10 vulnerabilities on TryHackMe — and building the kind of software I test.</p>
+          <p>That combination is my edge: I don't just flag a vulnerability, I understand why the code or configuration allowed it, because I've built systems the same way myself — from AES-encrypted messaging tools to segmented IoT networks to multithreaded banking simulations. I hold certifications spanning networking, ethical hacking, secure coding, and cloud foundations.</p>
+          <p>I'm looking for freelance engagements and junior roles where a security-first mindset — and the ability to explain findings without jargon — is worth having on the team.</p>
+        </div>
+        <ul class="fact-list">
+          <li><span class="fact-k">Based in</span><span class="fact-v">Alexandria, EG</span></li>
+          <li><span class="fact-k">Focus</span><span class="fact-v">AppSec / Network Sec</span></li>
+          <li><span class="fact-k">Currently</span><span class="fact-v">DEPI Pentest Diploma</span></li>
+          <li><span class="fact-k">Lab practice</span><span class="fact-v">TryHackMe — OWASP Top 10</span></li>
+          <li><span class="fact-k">Also builds</span><span class="fact-v">Python · Java · JS</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">02</span><h2 class="sec-title">Education</h2></div>
+      <div class="edu-card">
+        <div class="edu-top">
+          <span class="edu-school">Alamein International University</span>
+          <span class="edu-gpa">GPA 3.2 / 4.0</span>
+        </div>
+        <p class="edu-degree">B.Sc. in Cybersecurity — 4th Year, expected graduation 2027 · New Alamein, Egypt</p>
+        <div class="course-tags">
+          <span class="tag">Network Security</span>
+          <span class="tag">Ethical Hacking</span>
+          <span class="tag">Secure Software Development</span>
+          <span class="tag">Database Systems</span>
+          <span class="tag">Algorithms &amp; Data Structures</span>
+          <span class="tag">Object-Oriented Programming</span>
+          <span class="tag">Parallel Programming</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">03</span><h2 class="sec-title">Skills</h2></div>
+      <div class="skill-grid">
+        <div class="skill-cell">
+          <div class="skill-cat">Security Tools</div>
+          <div class="skill-items">Burp Suite, Nmap, Wireshark, Metasploit, OWASP ZAP, Gobuster, Kali Linux</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Security Practices</div>
+          <div class="skill-items">Penetration Testing, Vulnerability Assessment, OWASP Top 10, SSDLC, DevSecOps, Secure Coding, Cryptography</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Networking</div>
+          <div class="skill-items">TCP/IP, VLANs, ACLs, Routing &amp; Switching, DNS, DHCP, Traffic Analysis</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Cloud &amp; Systems</div>
+          <div class="skill-items">AWS Cloud Foundations, VMware vSphere, Linux, Unix, Red Hat System Administration</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Programming</div>
+          <div class="skill-items">Python, Java, JavaScript, C, C++</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Web &amp; Data</div>
+          <div class="skill-items">MERN Stack, Flask, REST APIs, SQL, MySQL, MongoDB, PostgreSQL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">04</span><h2 class="sec-title">Experience &amp; Training</h2></div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">In progress</div>
+          <div>
+            <div class="tl-org">Digital Egypt Pioneers Initiative (DEPI)</div>
+            <div class="tl-role">Penetration Testing &amp; Vulnerability Analysis — Full Diploma</div>
+            <p class="tl-desc">Building applied lab skills in offensive security on top of existing OWASP Top 10 and network-security foundations.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026</div>
+          <div>
+            <div class="tl-org">National Telecommunication Institute (NTI)</div>
+            <div class="tl-role">VMware vSphere: Install, Configure, Manage (V8) — Internship</div>
+            <p class="tl-desc">Hands-on internship covering vSphere installation, configuration and management — virtualization and infrastructure skills relevant to enterprise security environments.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Aug 2025</div>
+          <div>
+            <div class="tl-org">Commercial International Bank (CIB)</div>
+            <div class="tl-role">Future Vest: The Green Leap — Summer Internship (Virtual)</div>
+            <p class="tl-desc">Selected from a competitive pool for a 3-week intensive program covering banking, finance and future-ready professional skills through daily themed sessions and case studies.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">ITIDA-certified</div>
+          <div>
+            <div class="tl-org">NTI — ITIDA</div>
+            <div class="tl-role">Full-Stack Web Development Training — 120 Hours</div>
+            <p class="tl-desc">PHP-based backend, front-end technologies and database integration, with a focus on freelancing and client-delivery skills.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Training</div>
+          <div>
+            <div class="tl-org">Information Technology Institute (ITI)</div>
+            <div class="tl-role">OOP Field Training Program</div>
+            <p class="tl-desc">Design principles and patterns applied through Java — inheritance, polymorphism, encapsulation and abstraction across real-world design scenarios.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Competition</div>
+          <div>
+            <div class="tl-org">ICPC — Alexandria Regional Round</div>
+            <div class="tl-role">Team Participant</div>
+            <p class="tl-desc">Solved algorithmic and data-structure problems under timed conditions — graph algorithms, dynamic programming and combinatorics in team competition.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num mono">05</span>
+        <div>
+          <h2 class="sec-title">Offered Services</h2>
+          <p class="sec-lede">What I can do for a client, from a first scan to a signed-off fix.</p>
+        </div>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-cell">
+          <span class="svc-num mono">01</span>
+          <span class="svc-name">Penetration Testing &amp; Vulnerability Assessment</span>
+          <p class="svc-desc">Web app, network and infrastructure testing using Burp Suite, Nmap, Metasploit and Gobuster, with a prioritized findings report a dev team can action.</p>
+          <span class="svc-kw">Web · Network · Infrastructure</span>
+        </div>
+        <div class="svc-cell">
+          <span class="svc-num mono">02</span>
+          <span class="svc-name">Security Audits &amp; OWASP Top 10 Reviews</span>
+          <p class="svc-desc">Point-in-time review of a site or app against injection, XSS, broken auth and the rest of the OWASP Top 10, with plain-language risk ratings.</p>
+          <span class="svc-kw">SQLi · XSS · Auth Bypass</span>
+        </div>
+        <div class="svc-cell">
+          <span class="svc-num mono">03</span>
+          <span class="svc-name">Network Security Setup</span>
+          <p class="svc-desc">VLAN segmentation, ACL design and least-privilege network architecture, backed by CCNA-level routing/switching and traffic analysis in Wireshark.</p>
+          <span class="svc-kw">VLAN · ACL · Segmentation</span>
+        </div>
+        <div class="svc-cell">
+          <span class="svc-num mono">04</span>
+          <span class="svc-name">Secure Code Review</span>
+          <p class="svc-desc">Manual review of application source in Python, Java, JavaScript or C/C++ for common vulnerability classes and unsafe patterns.</p>
+          <span class="svc-kw">Python · Java · C/C++</span>
+        </div>
+        <div class="svc-cell">
+          <span class="svc-num mono">05</span>
+          <span class="svc-name">Web Application Security Assessment</span>
+          <p class="svc-desc">Basic security assessment of web applications in an authorized testing environment, focusing on common vulnerabilities such as SQL Injection, XSS, CSRF, authentication, session management, and security misconfigurations.</p>
+          <span class="svc-kw">SQLi · XSS · CSRF · Sessions</span>
+        </div>
+        <div class="svc-cell">
+          <span class="svc-num mono">06</span>
+          <span class="svc-name">Network Security Assessment</span>
+          <p class="svc-desc">Basic network reconnaissance and security assessment including host discovery, port scanning, service enumeration, and vulnerability identification using tools such as Nmap and Wireshark.</p>
+          <span class="svc-kw">Nmap · Wireshark · Enumeration</span>
+        </div>
+        <div class="svc-cell">
+          <span class="svc-num mono">07</span>
+          <span class="svc-name">Active Directory Security Assessment</span>
+          <p class="svc-desc">Security assessment of Active Directory lab environments, including domain enumeration, users and groups analysis, LDAP/Kerberos enumeration, permission analysis, and attack-path identification using tools such as BloodHound.</p>
+          <span class="svc-kw">LDAP · Kerberos · BloodHound</span>
+        </div>
+        <div class="svc-cell">
+          <span class="svc-num mono">08</span>
+          <span class="svc-name">Vulnerability Assessment &amp; Security Reporting</span>
+          <p class="svc-desc">Identification and documentation of security vulnerabilities found during an authorized assessment, including technical details, potential impact, evidence, and recommended remediation.</p>
+          <span class="svc-kw">Impact · Evidence · Remediation</span>
+        </div>
+        <div class="svc-cell" style="grid-column:1/-1">
+          <span class="svc-num mono">09</span>
+          <span class="svc-name">Security Lab Analysis &amp; Write-ups</span>
+          <p class="svc-desc">Technical documentation of cybersecurity labs and vulnerable environments, explaining the methodology, findings, exploitation process, security impact, and remediation.</p>
+          <span class="svc-kw">Methodology · Findings · Write-ups</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num mono">06</span>
+        <div>
+          <h2 class="sec-title">Projects</h2>
+          <p class="sec-lede">Independent builds spanning applied cryptography, network defense and systems programming.</p>
+        </div>
+      </div>
+      <div class="proj-grid">
+        <article class="proj-card">
+          <span class="proj-title">QR Code Secret Messages</span>
+          <p class="proj-desc">Desktop app that hides AES-encrypted messages inside QR codes, deriving keys with SHA-256 and blocking brute-force attempts with password-strength checks and two-step decryption authentication.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">AES-256</span><span class="tag">SHA-256</span><span class="tag">GUI</span></div>
+        </article>
+        <article class="proj-card">
+          <span class="proj-title">Smart Home IoT Network Security Simulation</span>
+          <p class="proj-desc">Segmented a simulated smart-home network into isolated VLANs with least-privilege ACLs, then used Wireshark to trace cross-segment traffic and map the remaining attack surface.</p>
+          <div class="proj-tags"><span class="tag">Packet Tracer</span><span class="tag">VLAN</span><span class="tag">ACL</span><span class="tag">Wireshark</span></div>
+        </article>
+        <article class="proj-card">
+          <span class="proj-title">Asynchronous Banking System</span>
+          <p class="proj-desc">Simulated concurrent banking transactions with Java threads, locks and semaphores — producer-consumer and monitor patterns to eliminate race conditions, benchmarked under load.</p>
+          <div class="proj-tags"><span class="tag">Java</span><span class="tag">Multithreading</span><span class="tag">Semaphores</span></div>
+        </article>
+        <article class="proj-card">
+          <span class="proj-title">Transportation Optimization System</span>
+          <p class="proj-desc">CLI routing engine using Dijkstra's algorithm and A* search to minimize travel time, benchmarking both heuristics against large-scale road-network graphs.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">Dijkstra</span><span class="tag">A*</span><span class="tag">CLI</span></div>
+        </article>
+        <article class="proj-card">
+          <span class="proj-title">Grand Egyptian Museum — Client-Server App</span>
+          <p class="proj-desc">TCP socket-based client-server system supporting real-time exhibit lookup, visitor management and staff communication channels.</p>
+          <div class="proj-tags"><span class="tag">Java</span><span class="tag">TCP Sockets</span><span class="tag">Networking</span></div>
+        </article>
+        <article class="proj-card">
+          <span class="proj-title">Library Management System</span>
+          <p class="proj-desc">Desktop application for book inventory, transaction tracking and user accounts, built on structured object-oriented design principles.</p>
+          <div class="proj-tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">GUI</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">07</span><h2 class="sec-title">Achievements &amp; Certifications</h2></div>
+      <div class="ach-grid">
+        <div class="ach-group">
+          <h4>Security &amp; Infrastructure</h4>
+          <ul class="ach-list">
+            <li><b>Cisco Certified Network Associate (CCNA)</b> — Cisco</li>
+            <li><b>Ethical Hacking Essentials (EHE)</b> — EC-Council</li>
+            <li><b>IoT Security: Interface and Data Security</b></li>
+            <li><b>Computer Networks and Network Security</b> — Coursera</li>
+            <li><b>Secure Coding Practices Specialization</b> — Coursera</li>
+            <li><b>AWS Cloud Foundations</b> — Amazon Web Services</li>
+            <li><b>Red Hat System Administration</b> — Mahara Tech</li>
+          </ul>
+        </div>
+        <div class="ach-group">
+          <h4>Software &amp; Data</h4>
+          <ul class="ach-list">
+            <li><b>Parallel Programming in Java</b> — Coursera</li>
+            <li><b>Data Mining Foundations &amp; Practice Specialization</b> — Coursera</li>
+            <li><b>Databases and SQL for Data Science</b> — IBM / Coursera</li>
+            <li><b>Software Design and Project Management</b> — Coursera</li>
+            <li><b>Engineering Practices for Quality Software</b> — Coursera</li>
+            <li><b>OOP &amp; Object-Oriented Hierarchies in Java</b></li>
+            <li><b>Algorithms on Graphs · Ordered Data Structures · Relational Database · Unix System Basics</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="beyond">
+        <h4>Leadership &amp; Activities</h4>
+        <p>Team Guide for Team Chile at the <b>International Olympiad in Informatics (IOI)</b>, Alexandria — mentored competitors through problem-solving strategy. <b>PR Committee</b> member at Alamein International University, recognized as Best Committee Member. Volunteer representative evaluating participant feedback at the university's <b>Hackathon</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="availability">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">08</span><h2 class="sec-title">Why Work With Me</h2></div>
+      <div class="avail">
+        <p class="lead">I'm early in freelance client work, so instead of testimonials I can't back up yet, here's what I bring to a first engagement:</p>
+        <ul class="avail-points">
+          <li><b>Hands-on practice</b>Active on TryHackMe exploiting real OWASP Top 10 vulnerabilities in controlled lab environments — not just theory.</li>
+          <li><b>Builds what he tests</b>Six independent projects spanning cryptography, network defense and concurrent systems — I understand the code behind the vulnerability.</li>
+          <li><b>Certified foundation</b>CCNA, Ethical Hacking Essentials and Secure Coding Practices back every engagement with a documented baseline.</li>
+        </ul>
+        <p class="avail-note">Open to a paid trial engagement or a reduced-rate first project, and happy to share academic and training references on request.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">09</span><h2 class="sec-title">Get In Touch</h2></div>
+      <div class="contact-grid">
+        <div class="prose">
+          <p class="lead">Have a site, app or network that needs a second pair of eyes? Tell me what you're working with and what's worrying you — I'll reply with next steps.</p>
+          <div class="cta-row" style="margin-top:22px;">
+            <a class="btn btn-primary" href="mailto:mohamedfawzy26.11.04@gmail.com?subject=Security%20project%20inquiry">Email me →</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/mohamed-fawzy-06000326b" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          </div>
+        </div>
+        <ul class="contact-list">
+          <li><span class="k">Email</span><a href="mailto:mohamedfawzy26.11.04@gmail.com">mohamedfawzy26.11.04@gmail.com</a></li>
+          <li><span class="k">Phone</span><a href="tel:+201010501997">+20 10 1050 1997</a></li>
+          <li><span class="k">Location</span><span>Alexandria, Egypt</span></li>
+          <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/mohamed-fawzy-06000326b" target="_blank" rel="noopener">mohamed-fawzy-06000326b</a></li>
+          <li><span class="k">TryHackMe</span><a href="https://tryhackme.com/p/MoFawzy2024" target="_blank" rel="noopener">MoFawzy2024</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>MOHAMED FAWZY — CYBERSECURITY STUDENT &amp; FREELANCE SECURITY ANALYST</span>
+    <span>ALEXANDRIA, EG · 2026</span>
+  </div>
+</footer>
+
+</body></html>
